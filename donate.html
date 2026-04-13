@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empower a Life | Avanarul Trust</title>
+  <meta name="description" content="Join Avanarul Trust's mission through your contribution. Support temple renovation, medical drives, and education.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Specialized styles for the split-screen layout */
+    .donate-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      min-height: 100vh;
+      background: var(--cream);
+    }
+
+    .info-pane {
+      background: linear-gradient(rgba(44, 29, 14, 0.7), rgba(44, 29, 14, 0.7)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .form-pane {
+      padding: 60px 80px;
+      overflow-y: auto;
+    }
+
+    .impact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(184, 134, 11, 0.2);
+      border: 1px solid var(--primary);
+      border-radius: 50px;
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .pane-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .pane-desc {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: rgba(255, 253, 248, 0.8);
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+
+    .impact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .impact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .impact-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--grad-gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+
+    .impact-text h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .impact-text p {
+      font-size: 0.9rem;
+      color: rgba(255, 253, 248, 0.7);
+    }
+
+    /* Override navbar for donate page */
+    .navbar-donate {
+      position: relative;
+      background: transparent;
+      border: none;
+      backdrop-filter: none;
+    }
+
+    @media (max-width: 1024px) {
+      .donate-grid {
+        grid-template-columns: 1fr;
+      }
+      .info-pane {
+        height: auto;
+        position: relative;
+        padding: 60px 24px;
+      }
+      .form-pane {
+        padding: 40px 24px;
+      }
+      .pane-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="donate-grid">
+    <!-- Left Pane: Information -->
+    <div class="info-pane">
+      <div class="impact-badge"><i class="fas fa-heart"></i> Empower a Community</div>
+      <h1 class="pane-title">Bringing Change <br> Where It Matters</h1>
+      <p class="pane-desc">Your generosity fuels our mission to preserve heritage, provide life-saving medical care, and empower the next generation with education.</p>
+      
+      <div class="impact-list">
+        <div class="impact-item">
+          <div class="impact-icon"><i class="fas fa-gopuram"></i></div>
+          <div class="impact-text">
+            <h4>Temple Restoration</h4>
+            <p>Preserving our cultural and spiritual anchors for the future.</p>
+          </div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-icon"><i class="fas fa-stethoscope"></i></div>
+          <div class="impact-text">
+            <h4>Medical Aid</h4>
+            <p>Providing essential healthcare to underserved communities.</p>
+          </div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="impact-text">
+            <h4>Education Support</h4>
+            <p>Empowering deserving students with life-changing scholarships.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Pane: Form -->
+    <div class="form-pane">
+      <nav class="navbar-donate">
+        <a href="index.html" class="nav-logo" style="margin-bottom: 40px;">
+          <img src="/logo.jpeg" alt="Avanarul Trust" class="logo-img">
+          <span style="color: var(--primary-dark); font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem;">Avanarul Trust</span>
+        </a>
+      </nav>
+
+      <div class="section-label" style="border: none; margin-bottom: 10px;">Your Contribution</div>
+      <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 0.95rem;">Select an amount and fill in your details to process your donation securely.</p>
+
+      <form id="donation-form" novalidate>
+        <!-- Amount Selection -->
+        <div class="section-card" style="box-shadow: var(--shadow-sm); padding: 24px;">
+          <div class="amount-grid">
+            <button type="button" class="amount-btn selected" data-amount="1000">
+              <span class="amount-value">₹1,000</span>
+              <span class="amount-label">Nourish</span>
+            </button>
+            <button type="button" class="amount-btn" data-amount="5000">
+              <span class="amount-value">₹5,000</span>
+              <span class="amount-label">Educate</span>
+            </button>
+            <button type="button" class="amount-btn" data-amount="10000">
+              <span class="amount-value">₹10,000</span>
+              <span class="amount-label">Preserve</span>
+            </button>
+          </div>
+
+          <div class="input-group">
+            <input type="number" id="custom-amount" placeholder=" " min="1">
+            <label for="custom-amount">Enter Custom Amount (₹)</label>
+          </div>
+          <input type="hidden" id="final-amount" value="1000">
+        </div>
+
+        <!-- Personal Details -->
+        <div class="section-card">
+          <div class="section-label">
+            <i class="fas fa-user-circle"></i> Personal Details
+          </div>
+          <div class="form-grid">
+            <div class="input-group span-2">
+              <input type="text" id="donor-name" placeholder=" " required>
+              <label for="donor-name">Full Name (as per ID)</label>
+            </div>
+            <div class="input-group">
+              <input type="email" id="donor-email" placeholder=" " required>
+              <label for="donor-email">Email Address</label>
+            </div>
+            <div class="input-group">
+              <input type="tel" id="donor-phone" placeholder=" " required>
+              <label for="donor-phone">Phone Number</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address Details -->
+        <div class="section-card">
+          <div class="section-label">
+            <i class="fas fa-map-marked-alt"></i> Address Details
+          </div>
+          <div class="input-group">
+            <input type="text" id="address-line" placeholder=" " required>
+            <label for="address-line">Street Address</label>
+          </div>
+          <div class="form-grid">
+            <div class="input-group">
+              <input type="text" id="address-city" placeholder=" " required>
+              <label for="address-city">City</label>
+            </div>
+            <div class="input-group">
+              <select id="address-state" required style="appearance: none; background: var(--glass-bg); padding: 16px 15px; border-radius: var(--radius-md); border: 1px solid var(--glass-border); width: 100%; color: var(--text);">
+                <option value="" disabled selected>Select State</option>
+                <option>Tamil Nadu</option>
+                <option>Andhra Pradesh</option>
+                <option>Karnataka</option>
+                <option>Kerala</option>
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <input type="text" id="address-pincode" placeholder=" " maxlength="6" pattern="[0-9]{6}" required>
+              <label for="address-pincode">Pincode</label>
+            </div>
+            <div class="input-group">
+              <select id="address-country" required style="appearance: none; background: var(--glass-bg); padding: 16px 15px; border-radius: var(--radius-md); border: 1px solid var(--glass-border); width: 100%; color: var(--text);">
+                <option value="India" selected>India</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Section -->
+        <div class="submit-section">
+          <div class="submit-summary">
+            <div class="label" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; opacity: 0.7;">Donation Total</div>
+            <div class="total-amount" id="display-amount" style="font-size: 2.2rem; font-weight: 900; font-family: 'Playfair Display', serif;">₹1,000</div>
+          </div>
+          <button type="submit" class="btn-donate-now" id="btn-donate-submit">
+            Confirm Donation
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="trust-strip" style="background: transparent; border-top: 1px solid var(--border); margin-top: 30px; padding-top: 20px;">
+          <div class="trust-item"><i class="fas fa-shield-halved"></i> Secure Payment</div>
+          <div class="trust-item"><i class="fas fa-lock"></i> Encrypted</div>
+          <div class="trust-item"><i class="fas fa-check-circle"></i> Regulatory Compliant</div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="success-overlay">
+    <div class="modal-card" style="text-align: center;">
+      <div style="width: 80px; height: 80px; background: #2e7d32; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 24px;">
+        <i class="fas fa-check"></i>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 12px;">Generosity Received</h2>
+      <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 30px;">Your contribution of <strong id="success-amount" style="color: var(--primary-dark);"></strong> helps us continue our work. A professional receipt has been sent to your email.</p>
+      <button class="btn btn-donate" style="width: 100%; padding: 16px;" onclick="window.location.href='index.html'">
+        Return to Home
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { API_URL } from './config.js';
+
+    // Amount Selection Logic
+    const amountBtns = document.querySelectorAll('.amount-btn');
+    const customAmountInput = document.getElementById('custom-amount');
+    const finalAmountInput = document.getElementById('final-amount');
+    const displayAmount = document.getElementById('display-amount');
+    const successOverlay = document.getElementById('success-overlay');
+
+    function formatCurrency(n) {
+      return '₹' + Number(n).toLocaleString('en-IN');
+    }
+
+    function selectAmount(amount) {
+      finalAmountInput.value = amount;
+      displayAmount.textContent = formatCurrency(amount);
+    }
+
+    amountBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        amountBtns.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        customAmountInput.value = '';
+        selectAmount(btn.getAttribute('data-amount'));
+      });
+    });
+
+    customAmountInput.addEventListener('input', () => {
+      const val = customAmountInput.value.trim();
+      if (val && parseFloat(val) > 0) {
+        amountBtns.forEach(b => b.classList.remove('selected'));
+        selectAmount(parseFloat(val));
+      } else if (!val) {
+        const firstBtn = document.querySelector('.amount-btn');
+        if (firstBtn) {
+          firstBtn.classList.add('selected');
+          selectAmount(firstBtn.getAttribute('data-amount'));
+        }
+      }
+    });
+
+    // Form Submission
+    const form = document.getElementById('donation-form');
+    const btnSubmit = document.getElementById('btn-donate-submit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(el => {
+        if (!el.value.trim()) {
+          el.style.borderColor = '#ef4444';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+
+      if (!valid) return;
+
+      const amount = finalAmountInput.value;
+      const userStr = localStorage.getItem('user');
+      const user = userStr ? JSON.parse(userStr) : null;
+
+      const donationData = {
+        amount: amount,
+        donorName: document.getElementById('donor-name').value,
+        donorEmail: document.getElementById('donor-email').value,
+        donorPhone: document.getElementById('donor-phone').value,
+        donorId: user ? user.id : null,
+        address: {
+          line: document.getElementById('address-line').value,
+          city: document.getElementById('address-city').value,
+          state: document.getElementById('address-state').value,
+          pincode: document.getElementById('address-pincode').value,
+          country: document.getElementById('address-country').value
+        }
+      };
+
+      const originalBtnText = btnSubmit.innerHTML;
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing...';
+
+      try {
+        const response = await fetch(`${API_URL}/api/donate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(donationData)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          document.getElementById('success-amount').textContent = formatCurrency(amount);
+          successOverlay.classList.add('active'); // Fixed class for new modal logic
+          form.reset();
+        } else {
+          alert('Error: ' + (data.message || 'Could not record donation.'));
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        alert('Network error. Please ensure the backend is reachable.');
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = originalBtnText;
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+</body>
+</html>
