@@ -78,6 +78,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             adminToggle.querySelector('i').classList.toggle('fa-times');
         });
     }
+
+    // Transaction Download
+    const downloadBtn = document.getElementById('download-transactions');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', downloadTransactions);
+    }
 });
 
 // ===== LOAD ALL DATA =====
@@ -120,6 +126,9 @@ async function loadDashboardData() {
 
         // Render Project List
         renderProjectList(projects);
+
+        // Fetch Slideshow
+        fetchSlideshow();
 
     } catch (err) {
         console.error('Data load error:', err);
@@ -176,7 +185,8 @@ function switchTab(tabId) {
     const titles = {
         'overview': 'Dashboard Overview',
         'transactions': 'All Transactions',
-        'projects': 'Journey Portfolio'
+        'projects': 'Journey Portfolio',
+        'slideshow': 'Slide Intelligence'
     };
 
     // Corrected from '.section-card' to '.dashboard-section'
@@ -341,3 +351,123 @@ window.saveProjectEdit = saveProjectEdit;
 window.openDeleteModal = openDeleteModal;
 window.closeDeleteModal = closeDeleteModal;
 window.confirmDelete = confirmDelete;
+
+// ===== SLIDESHOW MANAGEMENT =====
+async function fetchSlideshow() {
+    const container = document.getElementById('slides-editor-container');
+    if (!container) return;
+
+    try {
+        const response = await fetch(`${API_URL}/api/slideshow`);
+        const slides = await response.json();
+
+        container.innerHTML = slides.map(s => `
+            <div class="slide-card glass">
+                <div class="slide-preview">
+                    <img src="${s.image.startsWith('http') ? s.image : API_URL + s.image}" id="preview-slide-${s.slideId}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+                    <div class="slide-badge" style="position: absolute; top: 10px; left: 10px; background: var(--primary); color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.8rem;">Slide ${s.slideId}</div>
+                </div>
+                <form class="slide-edit-form" onsubmit="event.preventDefault(); updateSlide(${s.slideId}, this)">
+                    <div class="input-field">
+                        <label>Display Image</label>
+                        <input type="file" name="image" accept="image/*" onchange="previewImage(this, 'preview-slide-${s.slideId}')">
+                    </div>
+                    <div class="input-field">
+                        <label>Prime Headline</label>
+                        <input type="text" name="title" value="${s.title}" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Subtopic / Button Focus</label>
+                        <input type="text" name="subtitle" value="${s.subtitle || ''}" placeholder="Optional subtitle">
+                    </div>
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                        <div class="input-field">
+                            <label>Btn 1 Text</label>
+                            <input type="text" name="btn1Text" value="${s.btn1Text}">
+                        </div>
+                        <div class="input-field">
+                            <label>Btn 2 Text</label>
+                            <input type="text" name="btn2Text" value="${s.btn2Text}">
+                        </div>
+                    </div>
+                    <button type="submit" class="action-btn gold full-width" style="margin-top: 5px; width: 100%;">
+                        <i class="fas fa-save"></i> Synchronize Slide ${s.slideId}
+                    </button>
+                </form>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Slideshow fetch error:', error);
+    }
+}
+
+async function updateSlide(slideId, form) {
+    const token = localStorage.getItem('token');
+    const formData = new FormData(form);
+
+    try {
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing...';
+
+        const response = await fetch(`${API_URL}/api/admin/slideshow/${slideId}`, {
+            method: 'PUT',
+            headers: { 'Authorization': `Bearer ${token}` },
+            body: formData
+        });
+
+        if (response.ok) {
+            alert(`Slide ${slideId} updated successfully!`);
+            fetchSlideshow();
+        } else {
+            const err = await response.json();
+            alert('Update failed: ' + err.message);
+        }
+    } catch (error) {
+        console.error('Slide update error:', error);
+        alert('Server error during update.');
+    } finally {
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-save"></i> Synchronize Slide ' + slideId;
+    }
+}
+
+function previewImage(input, previewId) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById(previewId).src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// ===== TRANSACTION DOWNLOAD =====
+async function downloadTransactions() {
+    const token = localStorage.getItem('token');
+    
+    try {
+        const response = await fetch(`${API_URL}/api/admin/transactions/download`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!response.ok) throw new Error('Download failed');
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `avanarul_transactions_${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    } catch (error) {
+        console.error('Download error:', error);
+        alert('Failed to download transactions. Please try again.');
+    }
+}
+
+window.updateSlide = updateSlide;
+window.previewImage = previewImage;

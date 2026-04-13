@@ -23,13 +23,70 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// ===== Hero Carousel =====
-const slides = document.querySelectorAll('.hero-slide');
-const indicators = document.querySelectorAll('.indicator');
+// ===== Dynamic Hero Carousel =====
+let slides = [];
+let indicators = [];
 let currentSlide = 0;
 let slideInterval;
 
+async function fetchHomeSlideshow() {
+  const heroCarousel = document.querySelector('.hero-carousel');
+  const indicatorContainer = document.querySelector('.hero-indicators');
+  
+  if (!heroCarousel || !indicatorContainer) return;
+
+  try {
+    const response = await fetch(`${API_URL}/api/slideshow`);
+    const data = await response.json();
+
+    if (data && data.length > 0) {
+      // Render Slides
+      heroCarousel.innerHTML = data.map((s, idx) => `
+        <div class="hero-slide ${idx === 0 ? 'active' : ''}" data-slide="${idx}">
+          <div class="hero-bg" style="background-image: url('${s.image.startsWith('http') ? s.image : API_URL + s.image}'); background-size: cover; background-position: center;"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h1 class="hero-title animate-fade-up">${s.title.replace(/\n/g, '<br>')}</h1>
+            ${s.subtitle ? `<p class="hero-subtitle animate-fade-up delay-1">${s.subtitle}</p>` : ''}
+            <div class="hero-buttons animate-fade-up ${s.subtitle ? 'delay-2' : 'delay-1'}">
+              <a href="${s.btn1Link}" class="btn btn-hero-outline">${s.btn1Text}</a>
+              <a href="${s.btn2Link}" class="btn btn-hero-primary">${s.btn2Text}</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Render Indicators
+      indicatorContainer.innerHTML = data.map((_, idx) => `
+        <button class="indicator ${idx === 0 ? 'active' : ''}" data-slide="${idx}" aria-label="Slide ${idx + 1}"></button>
+      `).join('');
+
+      // Re-query elements
+      slides = document.querySelectorAll('.hero-slide');
+      indicators = document.querySelectorAll('.indicator');
+
+      // Re-attach indicator clicks
+      indicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+          stopAutoplay();
+          goToSlide(parseInt(indicator.dataset.slide));
+          startAutoplay();
+        });
+      });
+
+      startAutoplay();
+    }
+  } catch (error) {
+    console.error('Slideshow load error:', error);
+    // Fallback to static if needed, but they are already in HTML
+    slides = document.querySelectorAll('.hero-slide');
+    indicators = document.querySelectorAll('.indicator');
+    startAutoplay();
+  }
+}
+
 function goToSlide(index) {
+  if (slides.length === 0) return;
   slides[currentSlide].classList.remove('active');
   indicators[currentSlide].classList.remove('active');
   currentSlide = (index + slides.length) % slides.length;
@@ -46,6 +103,7 @@ function prevSlide() {
 }
 
 function startAutoplay() {
+  if (slideInterval) clearInterval(slideInterval);
   slideInterval = setInterval(nextSlide, 5000);
 }
 
@@ -54,48 +112,48 @@ function stopAutoplay() {
 }
 
 // Arrow buttons
-document.getElementById('hero-next').addEventListener('click', () => {
-  stopAutoplay();
-  nextSlide();
-  startAutoplay();
-});
+const nextBtn = document.getElementById('hero-next');
+const prevBtn = document.getElementById('hero-prev');
 
-document.getElementById('hero-prev').addEventListener('click', () => {
-  stopAutoplay();
-  prevSlide();
-  startAutoplay();
-});
-
-// Indicator clicks
-indicators.forEach(indicator => {
-  indicator.addEventListener('click', () => {
+if (nextBtn) {
+  nextBtn.addEventListener('click', () => {
     stopAutoplay();
-    goToSlide(parseInt(indicator.dataset.slide));
+    nextSlide();
     startAutoplay();
   });
-});
+}
+
+if (prevBtn) {
+  prevBtn.addEventListener('click', () => {
+    stopAutoplay();
+    prevSlide();
+    startAutoplay();
+  });
+}
 
 // Touch/swipe support for hero
-let touchStartX = 0;
-let touchEndX = 0;
 const heroEl = document.getElementById('hero');
+if (heroEl) {
+  let touchStartX = 0;
+  let touchEndX = 0;
 
-heroEl.addEventListener('touchstart', (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
+  heroEl.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
 
-heroEl.addEventListener('touchend', (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  const diff = touchStartX - touchEndX;
-  if (Math.abs(diff) > 50) {
-    stopAutoplay();
-    if (diff > 0) nextSlide();
-    else prevSlide();
-    startAutoplay();
-  }
-}, { passive: true });
+  heroEl.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      stopAutoplay();
+      if (diff > 0) nextSlide();
+      else prevSlide();
+      startAutoplay();
+    }
+  }, { passive: true });
+}
 
-startAutoplay();
+fetchHomeSlideshow();
 
 // ===== Animated Counter =====
 function animateCounter(el, target) {
