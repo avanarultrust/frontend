@@ -19,11 +19,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     const data = await response.json();
+    console.log('Session response:', data);
 
     if (response.ok && data.valid) {
       // Show user data
-      document.getElementById('loading-indicator').style.display = 'none';
-      document.getElementById('profile-content').style.display = 'block';
+      const loadingEl = document.getElementById('loading-indicator');
+      const contentEl = document.getElementById('profile-content');
+      
+      if (loadingEl) loadingEl.style.display = 'none';
+      if (contentEl) contentEl.style.display = 'block';
       
       document.getElementById('display-name').textContent = data.user.name || 'Member';
       document.getElementById('display-email').textContent = data.user.email || 'N/A';
@@ -40,11 +44,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       fetchDonations(token);
       
     } else {
-      // Invalid token, force logout
+      console.warn('Session invalid or expired');
       forceLogout();
     }
   } catch (error) {
-    console.error('Error verifying token:', error);
+    console.error('Fatal error in profile.js:', error);
     forceLogout();
   }
 });

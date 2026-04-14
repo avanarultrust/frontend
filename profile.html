@@ -183,68 +183,69 @@
     </div>
   </nav>
 
-  <div class="profile-hero">
-    <div class="profile-hero-content">
-      <div class="membership-status">
-        <i class="fas fa-certificate"></i> Verified Donor
-      </div>
-      <h1 id="display-name">Loading...</h1>
-      <p style="opacity: 0.8; font-size: 1.1rem; font-weight: 500;">Your purpose-driven journey with Avanarul Trust.</p>
-    </div>
-  </div>
-
-  <div class="dashboard-wrap">
-    
-    <!-- Stats Tray -->
-    <div class="stats-tray">
-      <div class="impact-card">
-        <span class="impact-val" id="stat-total-impact">₹ 0</span>
-        <span class="impact-label">Total Impact</span>
-      </div>
-      <div class="impact-card">
-        <span class="impact-val" id="stat-count">0</span>
-        <span class="impact-label">Mission Acts</span>
-      </div>
-      <div class="impact-card">
-        <span class="impact-val" id="stat-since">2024</span>
-        <span class="impact-label">Active Since</span>
+  <main id="profile-content" style="display: none;">
+    <div class="profile-hero">
+      <div class="profile-hero-content">
+        <div class="membership-status">
+          <i class="fas fa-certificate"></i> Verified Donor
+        </div>
+        <h1 id="display-name">Loading...</h1>
+        <p style="opacity: 0.8; font-size: 1.1rem; font-weight: 500;">Your purpose-driven journey with Avanarul Trust.</p>
       </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-grid">
-      <!-- Identity Pane -->
-      <aside class="pane">
-        <h2 class="pane-title"><i class="fas fa-user-circle"></i> Identity</h2>
-        <div class="info-list">
-          <div class="info-item">
-            <label>Legal Identifier</label>
-            <div class="val" id="display-id">#000000</div>
-          </div>
-          <div class="info-item">
-            <label>Secure Email</label>
-            <div class="val" id="display-email">-</div>
-          </div>
-          <div class="info-item">
-            <label>Linked Mobile</label>
-            <div class="val" id="display-mobile">-</div>
-          </div>
+    <div class="dashboard-wrap">
+      
+      <!-- Stats Tray -->
+      <div class="stats-tray">
+        <div class="impact-card">
+          <span class="impact-val" id="stat-total-impact">₹ 0</span>
+          <span class="impact-label">Total Impact</span>
         </div>
-      </aside>
+        <div class="impact-card">
+          <span class="impact-val" id="stat-count">0</span>
+          <span class="impact-label">Mission Acts</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-val" id="stat-since">2024</span>
+          <span class="impact-label">Active Since</span>
+        </div>
+      </div>
 
-      <!-- History Pane -->
-      <section class="pane">
-        <h2 class="pane-title"><i class="fas fa-history"></i> Mission History</h2>
-        <div id="loading-indicator" style="text-align: center; padding: 40px;">
-          <i class="fas fa-circle-notch fa-spin fa-2x" style="color: var(--primary);"></i>
-        </div>
-        <div id="donation-list" class="history-stream">
-          <!-- Dynamic stream of donations -->
-        </div>
-      </section>
+      <!-- Main Content -->
+      <div class="main-grid">
+        <!-- Identity Pane -->
+        <aside class="pane">
+          <h2 class="pane-title"><i class="fas fa-user-circle"></i> Identity</h2>
+          <div class="info-list">
+            <div class="info-item">
+              <label>Legal Identifier</label>
+              <div class="val" id="display-id">#000000</div>
+            </div>
+            <div class="info-item">
+              <label>Secure Email</label>
+              <div class="val" id="display-email">-</div>
+            </div>
+            <div class="info-item">
+              <label>Linked Mobile</label>
+              <div class="val" id="display-mobile">-</div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- History Pane -->
+        <section class="pane">
+          <h2 class="pane-title"><i class="fas fa-history"></i> Mission History</h2>
+          <div id="loading-indicator" style="text-align: center; padding: 40px;">
+            <i class="fas fa-circle-notch fa-spin fa-2x" style="color: var(--primary);"></i>
+          </div>
+          <div id="donation-list" class="history-stream">
+            <!-- Dynamic stream of donations -->
+          </div>
+        </section>
+      </div>
     </div>
-
-  </div>
+  </main>
 
   <script type="module" src="/profile.js"></script>
 </body>

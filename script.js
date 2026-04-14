@@ -372,10 +372,9 @@ if (loginForm) {
           loginModal.classList.remove('active');
           updateNavForUser(data.user);
           
-          // Use absolute path for robustness
-          const redirectPath = data.user.email === 'avanarultrust@gmail.com' ? '/admin.html' : '/profile.html';
-          window.location.href = window.location.origin + redirectPath;
-        }, 1500);
+          const redirectPath = data.user.email === 'avanarultrust@gmail.com' ? 'admin.html' : 'profile.html';
+          window.location.href = redirectPath;
+        }, 1000);
       }
     } catch (error) {
       console.error(error);
