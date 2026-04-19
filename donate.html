@@ -130,6 +130,37 @@
         font-size: 2.5rem;
       }
     }
+
+    .bank-details-box {
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .bank-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-warm);
+      padding: 8px 0;
+    }
+    .bank-row:last-child {
+      border-bottom: none;
+    }
+    .qr-container {
+      text-align: center;
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+    }
+    .qr-container img {
+      max-width: 200px;
+      height: auto;
+      border: 4px solid var(--primary-light);
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -263,6 +294,31 @@
           </div>
         </div>
 
+        <!-- Payment Details -->
+        <div class="section-card">
+          <div class="section-label">
+            <i class="fas fa-university"></i> Bank Details & Payment
+          </div>
+          <div class="bank-details-box">
+            <div class="bank-row"><span>Account No:</span> <strong style="color: var(--primary-dark); font-size: 1.1rem; font-family: monospace;">44900918566</strong></div>
+            <div class="bank-row"><span>IFSC:</span> <strong style="color: var(--primary-dark); font-size: 1.1rem; font-family: monospace;">SBIN0015984</strong></div>
+            <div class="bank-row"><span>Bank Name:</span> <strong>SBI</strong></div>
+            <div class="bank-row"><span>Account Holder:</span> <strong>Rajapandian S</strong></div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; text-align: center; line-height: 1.5;">
+            Please scan the QR Code below or use the bank details to complete your payment.<br>
+            After paying, enter your <strong>UTR / Transaction ID</strong> below.
+          </p>
+          <div class="qr-container">
+            <img src="/qr_code.png" alt="PhonePe QR Code" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg';">
+            <p style="margin-top: 10px; font-weight: bold; color: var(--primary-dark);">Scan to Pay</p>
+          </div>
+          <div class="input-group">
+            <input type="text" id="payment-utr" placeholder=" " required minlength="6">
+            <label for="payment-utr">UTR / Transaction ID (ex. 123456789012)</label>
+          </div>
+        </div>
+
         <!-- Submit Section -->
         <div class="submit-section">
           <div class="submit-summary">
@@ -370,6 +426,7 @@
         donorEmail: document.getElementById('donor-email').value,
         donorPhone: document.getElementById('donor-phone').value,
         donorId: user ? user.id : null,
+        utr: document.getElementById('payment-utr').value,
         address: {
           line: document.getElementById('address-line').value,
           city: document.getElementById('address-city').value,
