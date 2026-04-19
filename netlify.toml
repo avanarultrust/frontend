@@ -1,0 +1,12 @@
+# Netlify when this repo is the site root (not monorepo).
+# FRONTEND_URL on Render: https://anavarul.org,https://www.anavarul.org
+# Optional env: VITE_API_URL=https://your-backend.onrender.com
+
+[build]
+  command = "npm install && npm run build"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"

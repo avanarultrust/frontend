@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avanarul | My Mission Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .profile-viewport {
+      background: var(--admin-bg, #FAF6EF);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-hero {
+      background: linear-gradient(rgba(44, 29, 14, 0.7), rgba(44, 29, 14, 0.7)), url('https://images.unsplash.com/photo-1518005020480-1cd197c385c7?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 24px;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 950;
+      margin-bottom: 12px;
+    }
+
+    .membership-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(184, 134, 11, 0.3);
+      border: 1px solid var(--primary);
+      border-radius: 50px;
+      color: var(--primary);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+    }
+
+    .dashboard-wrap {
+      max-width: 1200px;
+      margin: -60px auto 100px;
+      padding: 0 24px;
+      width: 100%;
+      position: relative;
+      z-index: 5;
+    }
+
+    .stats-tray {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .impact-card {
+      background: white;
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid var(--admin-glass-border, rgba(184, 134, 11, 0.1));
+      box-shadow: 0 15px 45px rgba(44, 29, 14, 0.06);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .impact-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .impact-val {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    .impact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+    }
+
+    .pane {
+      background: white;
+      border-radius: 30px;
+      padding: 40px;
+      border: 1px solid var(--admin-glass-border, rgba(184, 134, 11, 0.1));
+      box-shadow: 0 20px 60px rgba(44, 29, 14, 0.04);
+    }
+
+    .pane-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .info-item label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .info-item .val {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    .history-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 992px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-tray {
+        grid-template-columns: 1fr;
+      }
+      .profile-hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="profile-viewport">
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="/logo.jpeg" alt="Avanarul Trust" class="logo-img">
+        <span class="logo-name">Avanarul Trust</span>
+      </a>
+      <div style="display: flex; gap: 15px;">
+        <a href="index.html" class="btn-outline" style="border-radius: 50px;"><i class="fas fa-home"></i> Home</a>
+        <button id="btn-profile-logout" class="btn btn-donate" style="background: #e74c3c; box-shadow: none;">Sign Out</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="profile-content" style="display: none;">
+    <div class="profile-hero">
+      <div class="profile-hero-content">
+        <div class="membership-status">
+          <i class="fas fa-certificate"></i> Verified Donor
+        </div>
+        <h1 id="display-name">Loading...</h1>
+        <p style="opacity: 0.8; font-size: 1.1rem; font-weight: 500;">Your purpose-driven journey with Avanarul Trust.</p>
+      </div>
+    </div>
+
+    <div class="dashboard-wrap">
+      
+      <!-- Stats Tray -->
+      <div class="stats-tray">
+        <div class="impact-card">
+          <span class="impact-val" id="stat-total-impact">₹ 0</span>
+          <span class="impact-label">Total Impact</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-val" id="stat-count">0</span>
+          <span class="impact-label">Mission Acts</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-val" id="stat-since">2024</span>
+          <span class="impact-label">Active Since</span>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-grid">
+        <!-- Identity Pane -->
+        <aside class="pane">
+          <h2 class="pane-title"><i class="fas fa-user-circle"></i> Identity</h2>
+          <div class="info-list">
+            <div class="info-item">
+              <label>Legal Identifier</label>
+              <div class="val" id="display-id">#000000</div>
+            </div>
+            <div class="info-item">
+              <label>Secure Email</label>
+              <div class="val" id="display-email">-</div>
+            </div>
+            <div class="info-item">
+              <label>Linked Mobile</label>
+              <div class="val" id="display-mobile">-</div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- History Pane -->
+        <section class="pane">
+          <h2 class="pane-title"><i class="fas fa-history"></i> Mission History</h2>
+          <div id="loading-indicator" style="text-align: center; padding: 40px;">
+            <i class="fas fa-circle-notch fa-spin fa-2x" style="color: var(--primary);"></i>
+          </div>
+          <div id="donation-list" class="history-stream">
+            <!-- Dynamic stream of donations -->
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/profile.js"></script>
+</body>
+</html>

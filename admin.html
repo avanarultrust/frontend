@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Admin | Avanarul Trust</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Link existing design system + new dashboard styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-portal">
+
+    <!-- Mobile Navigation Toggle -->
+    <button class="nav-toggle-btn" id="admin-toggle" aria-label="Toggle Navigation">
+        <i class="fas fa-bars-staggered"></i>
+    </button>
+
+    <!-- Side Intelligence Navigation -->
+    <aside class="sidebar-wrapper" id="admin-sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="brand-link">
+                <img src="/logo.jpeg" alt="Avanarul" class="brand-logo">
+                <div class="brand-info">
+                    <span class="brand-name">Avanarul</span>
+                    <span class="brand-tagline">Admin Suite</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-group">
+                <span class="nav-group-label">Core Management</span>
+                <div class="nav-link active" onclick="switchTab('overview')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Overview</span>
+                </div>
+                <div class="nav-link" onclick="switchTab('transactions')">
+                    <i class="fas fa-indian-rupee-sign"></i>
+                    <span>Revenue Log</span>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-label">Content Intelligence</span>
+                <div class="nav-link" onclick="switchTab('projects')">
+                    <i class="fas fa-gopuram"></i>
+                    <span>Journey Portfolio</span>
+                </div>
+                <div class="nav-link" id="nav-slideshow" onclick="switchTab('slideshow')">
+                    <i class="fas fa-images"></i>
+                    <span>Slide Intelligence</span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-user-card">
+                <div class="avatar-circle">A</div>
+                <div class="user-details">
+                    <p class="user-name">Root Admin</p>
+                    <p class="user-role">Super User</p>
+                </div>
+            </div>
+            <button class="logout-action" id="logout-btn">
+                <i class="fas fa-power-off"></i>
+                <span>Secure Exit</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Dynamic Workspace -->
+    <main class="workspace-viewport">
+        
+        <!-- Workspace Header -->
+        <header class="workspace-header">
+            <div class="header-left">
+                <h1 id="tab-title" class="current-view-title">Overview</h1>
+                <p class="workspace-subtitle">Intelligence and controls for Avanarul Trust.</p>
+            </div>
+            <div class="header-right">
+                <div class="live-status">
+                    <span class="pulse-indicator"></span>
+                    Systems Operational
+                </div>
+                <div class="date-widget" id="header-date">
+                    Admin Active
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Containers -->
+        <div class="workspace-content">
+            
+            <!-- OVERVIEW TAB -->
+            <section id="overview-tab" class="dashboard-section active">
+                <div class="stats-matrix">
+                    <div class="metric-card gold">
+                        <div class="metric-header">
+                            <span class="metric-icon"><i class="fas fa-vault"></i></span>
+                            <span class="metric-trend positive"><i class="fas fa-arrow-up"></i> Live</span>
+                        </div>
+                        <div class="metric-body">
+                            <h3 id="total-donations" class="metric-value">₹ 0</h3>
+                            <p class="metric-label">Lifetime Contributions</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-card gradient">
+                        <div class="metric-header">
+                            <span class="metric-icon"><i class="fas fa-users-viewfinder"></i></span>
+                        </div>
+                        <div class="metric-body">
+                            <h3 id="donor-count" class="metric-value">0</h3>
+                            <p class="metric-label">Global Visionaries</p>
+                        </div>
+                    </div>
+
+                    <div class="metric-card glass">
+                        <div class="metric-header">
+                            <span class="metric-icon"><i class="fas fa-shapes"></i></span>
+                        </div>
+                        <div class="metric-body">
+                            <h3 id="project-count" class="metric-value">0</h3>
+                            <p class="metric-label">Active Ventures</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity or Secondary View -->
+                <div class="activity-module glass">
+                    <h2 class="module-title">Operational Intelligence</h2>
+                    <div class="empty-intelligence">
+                        <i class="fas fa-radar fa-spin"></i>
+                        <p>Aggregating real-time data from all trust touchpoints...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TRANSACTIONS TAB -->
+            <section id="transactions-tab" class="dashboard-section">
+                <div class="list-module glass">
+                    <div class="module-header">
+                        <h2 class="module-title">Revenue Archives</h2>
+                        <div class="header-actions" style="display: flex; gap: 10px; align-items: center;">
+                            <button class="action-btn outline" id="download-transactions">
+                                <i class="fas fa-file-csv"></i> Export CSV
+                            </button>
+                            <div class="search-filter">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Filter identifiers...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-frame">
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>Processing Date</th>
+                                    <th>Entity Identifier</th>
+                                    <th>Communication Channel</th>
+                                    <th>Amount</th>
+                                    <th>UTR No.</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactions-body">
+                                <!-- Data stream -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJECTS TAB -->
+            <section id="projects-tab" class="dashboard-section">
+                <div class="module-controls">
+                    <h2 class="module-title">Journey Portfolio Manager</h2>
+                    <button class="action-btn gold" onclick="toggleAddForm()">
+                        <i class="fas fa-plus-circle"></i> New Venture
+                    </button>
+                </div>
+
+                <!-- Creation Interface (Collapsible) -->
+                <div id="add-project-section" class="composer-interface glass">
+                    <div class="composer-header">
+                        <h3>Draft New Journey</h3>
+                        <p>Provide mission details and visual assets.</p>
+                    </div>
+                    <form id="project-form" class="premium-form">
+                        <div class="form-grid">
+                            <div class="input-field">
+                                <label>Venture Title</label>
+                                <input type="text" id="proj-title" placeholder="Project name" required>
+                            </div>
+                            <div class="input-field full">
+                                <label>Mission Narrative</label>
+                                <textarea id="proj-desc" rows="6" placeholder="Deep details about the impact..." required></textarea>
+                            </div>
+                            <div class="input-field full">
+                                <label class="file-drop-zone">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Select Portfolio Assets (Multiple)</span>
+                                    <input type="file" id="proj-images" multiple accept="image/*" required>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">Publish to Public Journey</button>
+                            <button type="button" class="cancel-btn" onclick="toggleAddForm()">Retract Draft</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="projects-list" class="portfolio-grid">
+                    <!-- Cards will be injected -->
+                </div>
+            </section>
+
+            <!-- SLIDESHOW TAB -->
+            <section id="slideshow-tab" class="dashboard-section">
+                <div class="module-header">
+                    <h2 class="module-title">Slide Intelligence</h2>
+                    <p class="section-description">Manage the 3 main spotlight items on the homepage.</p>
+                </div>
+                
+                <div class="slides-editor-grid" id="slides-editor-container">
+                    <!-- 3 Slide edit cards will be injected here -->
+                    <div class="loading-state">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Synchronizing slide intelligence...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ADMINISTRATIVE MODALS -->
+    
+    <!-- Intelligence Modal -->
+    <div id="trans-modal" class="portal-modal">
+        <div class="modal-surface glass">
+            <div class="modal-decor"></div>
+            <h3 class="modal-primary-label">Legacy Intel</h3>
+            <div id="modal-details" class="intel-stream"></div>
+            <button class="dismiss-btn" onclick="closeModal()">Acknowledge</button>
+        </div>
+    </div>
+
+    <!-- Edit/Refine Modal -->
+    <div id="edit-modal" class="portal-modal">
+        <div class="modal-surface glass">
+            <h3 class="modal-primary-label">Refine Venture</h3>
+            <input type="hidden" id="edit-project-id">
+            <div class="edit-fields">
+                <div class="input-field">
+                    <label>Updated Title</label>
+                    <input type="text" id="edit-title" required>
+                </div>
+                <div class="input-field">
+                    <label>Refined Narrative</label>
+                    <textarea id="edit-desc" rows="8" required></textarea>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="action-btn gold" onclick="saveProjectEdit()">Commit Updates</button>
+                <button class="action-btn outline" onclick="closeEditModal()">Dismiss</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Destruction Confirm Modal -->
+    <div id="delete-modal" class="portal-modal">
+        <div class="modal-surface warning glass">
+            <div class="warning-icon"><i class="fas fa-skull-crossbones"></i></div>
+            <h3 class="modal-primary-label">Purge Record?</h3>
+            <p class="warning-desc">This action is permanent. The journey record will be erased from the trust archives.</p>
+            <input type="hidden" id="delete-project-id">
+            <div class="modal-actions">
+                <button class="action-btn danger" onclick="confirmDelete()">Execute Purge</button>
+                <button class="action-btn outline" onclick="closeDeleteModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="admin.js"></script>
+    <script>
+        // Inline date widget
+        const d = new Date();
+        document.getElementById('header-date').innerText = d.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    </script>
+</body>
+</html>
