@@ -109,7 +109,6 @@ async function loadDashboardData() {
                 <tr>
                     <td>${new Date(t.timestamp).toLocaleDateString()}</td>
                     <td>${t.name}</td>
-                    <td>${t.email}</td>
                     <td style="color: var(--admin-accent); font-weight: 700;">₹${t.amount.toLocaleString('en-IN')}</td>
                     <td><span style="background: rgba(184,134,11,0.1); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;">${t.paymentId || 'N/A'}</span></td>
                     <td style="display: flex; gap: 5px;">
@@ -246,7 +245,6 @@ function viewDetails(id) {
     const detailsDiv = document.getElementById('modal-details');
     detailsDiv.innerHTML = `
         <div><strong>Phone:</strong> ${t.phone || 'N/A'}</div>
-        <div><strong>Email:</strong> ${t.email}</div>
         <div><strong>Address:</strong><br>
             ${t.address?.line || 'N/A'}<br>
             ${t.address?.city || ''}, ${t.address?.state || ''} - ${t.address?.pincode || ''}<br>

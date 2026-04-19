@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Empower a Life | Avanarul Trust</title>
-  <meta name="description" content="Join Avanarul Trust's mission through your contribution. Support temple renovation, medical drives, and education.">
+  <meta name="description"
+    content="Join Avanarul Trust's mission through your contribution. Support temple renovation, medical drives, and education.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -118,14 +122,17 @@
       .donate-grid {
         grid-template-columns: 1fr;
       }
+
       .info-pane {
         height: auto;
         position: relative;
         padding: 60px 24px;
       }
+
       .form-pane {
         padding: 40px 24px;
       }
+
       .pane-title {
         font-size: 2.5rem;
       }
@@ -138,15 +145,18 @@
       padding: 24px;
       margin-bottom: 24px;
     }
+
     .bank-row {
       display: flex;
       justify-content: space-between;
       border-bottom: 1px dashed var(--border-warm);
       padding: 8px 0;
     }
+
     .bank-row:last-child {
       border-bottom: none;
     }
+
     .qr-container {
       text-align: center;
       margin: 20px 0;
@@ -155,6 +165,7 @@
       border-radius: var(--radius);
       background: white;
     }
+
     .qr-container img {
       max-width: 200px;
       height: auto;
@@ -163,6 +174,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="donate-grid">
@@ -170,8 +182,9 @@
     <div class="info-pane">
       <div class="impact-badge"><i class="fas fa-heart"></i> Empower a Community</div>
       <h1 class="pane-title">Bringing Change <br> Where It Matters</h1>
-      <p class="pane-desc">Your generosity fuels our mission to preserve heritage, provide life-saving medical care, and empower the next generation with education.</p>
-      
+      <p class="pane-desc">Your generosity fuels our mission to preserve heritage, provide life-saving medical care, and
+        empower the next generation with education.</p>
+
       <div class="impact-list">
         <div class="impact-item">
           <div class="impact-icon"><i class="fas fa-gopuram"></i></div>
@@ -202,12 +215,15 @@
       <nav class="navbar-donate">
         <a href="index.html" class="nav-logo" style="margin-bottom: 40px;">
           <img src="/logo.jpeg" alt="Avanarul Trust" class="logo-img">
-          <span style="color: var(--primary-dark); font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem;">Avanarul Trust</span>
+          <span
+            style="color: var(--primary-dark); font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem;">Avanarul
+            Trust</span>
         </a>
       </nav>
 
       <div class="section-label" style="border: none; margin-bottom: 10px;">Your Contribution</div>
-      <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 0.95rem;">Select an amount and fill in your details to process your donation securely.</p>
+      <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 0.95rem;">Select an amount and fill in your
+        details to process your donation securely.</p>
 
       <form id="donation-form" novalidate>
         <!-- Amount Selection -->
@@ -245,10 +261,6 @@
               <label for="donor-name">Full Name (as per ID)</label>
             </div>
             <div class="input-group">
-              <input type="email" id="donor-email" placeholder=" " required>
-              <label for="donor-email">Email Address</label>
-            </div>
-            <div class="input-group">
               <input type="tel" id="donor-phone" placeholder=" " required>
               <label for="donor-phone">Phone Number</label>
             </div>
@@ -270,7 +282,8 @@
               <label for="address-city">City</label>
             </div>
             <div class="input-group">
-              <select id="address-state" required style="appearance: none; background: var(--glass-bg); padding: 16px 15px; border-radius: var(--radius-md); border: 1px solid var(--glass-border); width: 100%; color: var(--text);">
+              <select id="address-state" required
+                style="appearance: none; background: var(--glass-bg); padding: 16px 15px; border-radius: var(--radius-md); border: 1px solid var(--glass-border); width: 100%; color: var(--text);">
                 <option value="" disabled selected>Select State</option>
                 <option>Tamil Nadu</option>
                 <option>Andhra Pradesh</option>
@@ -286,7 +299,8 @@
               <label for="address-pincode">Pincode</label>
             </div>
             <div class="input-group">
-              <select id="address-country" required style="appearance: none; background: var(--glass-bg); padding: 16px 15px; border-radius: var(--radius-md); border: 1px solid var(--glass-border); width: 100%; color: var(--text);">
+              <select id="address-country" required
+                style="appearance: none; background: var(--glass-bg); padding: 16px 15px; border-radius: var(--radius-md); border: 1px solid var(--glass-border); width: 100%; color: var(--text);">
                 <option value="India" selected>India</option>
                 <option value="Other">Other</option>
               </select>
@@ -300,17 +314,23 @@
             <i class="fas fa-university"></i> Bank Details & Payment
           </div>
           <div class="bank-details-box">
-            <div class="bank-row"><span>Account No:</span> <strong style="color: var(--primary-dark); font-size: 1.1rem; font-family: monospace;">44900918566</strong></div>
-            <div class="bank-row"><span>IFSC:</span> <strong style="color: var(--primary-dark); font-size: 1.1rem; font-family: monospace;">SBIN0015984</strong></div>
+            <div class="bank-row"><span>Account No:</span> <strong
+                style="color: var(--primary-dark); font-size: 1.1rem; font-family: monospace;">44900918566</strong>
+            </div>
+            <div class="bank-row"><span>IFSC:</span> <strong
+                style="color: var(--primary-dark); font-size: 1.1rem; font-family: monospace;">SBIN0015984</strong>
+            </div>
             <div class="bank-row"><span>Bank Name:</span> <strong>SBI</strong></div>
             <div class="bank-row"><span>Account Holder:</span> <strong>Rajapandian S</strong></div>
           </div>
-          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; text-align: center; line-height: 1.5;">
+          <p
+            style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; text-align: center; line-height: 1.5;">
             Please scan the QR Code below or use the bank details to complete your payment.<br>
             After paying, enter your <strong>UTR / Transaction ID</strong> below.
           </p>
           <div class="qr-container">
-            <img src="/qr_code.png" alt="PhonePe QR Code" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg';">
+            <img src="/qr_code.png" alt="PhonePe QR Code"
+              onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg';">
             <p style="margin-top: 10px; font-weight: bold; color: var(--primary-dark);">Scan to Pay</p>
           </div>
           <div class="input-group">
@@ -322,8 +342,11 @@
         <!-- Submit Section -->
         <div class="submit-section">
           <div class="submit-summary">
-            <div class="label" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; opacity: 0.7;">Donation Total</div>
-            <div class="total-amount" id="display-amount" style="font-size: 2.2rem; font-weight: 900; font-family: 'Playfair Display', serif;">₹1,000</div>
+            <div class="label"
+              style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; opacity: 0.7;">Donation Total
+            </div>
+            <div class="total-amount" id="display-amount"
+              style="font-size: 2.2rem; font-weight: 900; font-family: 'Playfair Display', serif;">₹1,000</div>
           </div>
           <button type="submit" class="btn-donate-now" id="btn-donate-submit">
             Confirm Donation
@@ -331,7 +354,8 @@
           </button>
         </div>
 
-        <div class="trust-strip" style="background: transparent; border-top: 1px solid var(--border); margin-top: 30px; padding-top: 20px;">
+        <div class="trust-strip"
+          style="background: transparent; border-top: 1px solid var(--border); margin-top: 30px; padding-top: 20px;">
           <div class="trust-item"><i class="fas fa-shield-halved"></i> Secure Payment</div>
           <div class="trust-item"><i class="fas fa-lock"></i> Encrypted</div>
           <div class="trust-item"><i class="fas fa-check-circle"></i> Regulatory Compliant</div>
@@ -343,11 +367,14 @@
   <!-- Success Modal -->
   <div class="modal-overlay" id="success-overlay">
     <div class="modal-card" style="text-align: center;">
-      <div style="width: 80px; height: 80px; background: #2e7d32; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 24px;">
+      <div
+        style="width: 80px; height: 80px; background: #2e7d32; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 24px;">
         <i class="fas fa-check"></i>
       </div>
       <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 12px;">Generosity Received</h2>
-      <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 30px;">Your contribution of <strong id="success-amount" style="color: var(--primary-dark);"></strong> helps us continue our work. A professional receipt has been sent to your email.</p>
+      <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 30px;">Your contribution of <strong
+          id="success-amount" style="color: var(--primary-dark);"></strong> helps us continue our work. A professional
+        receipt has been sent to your email.</p>
       <button class="btn btn-donate" style="width: 100%; padding: 16px;" onclick="window.location.href='index.html'">
         Return to Home
       </button>
@@ -423,7 +450,6 @@
       const donationData = {
         amount: amount,
         donorName: document.getElementById('donor-name').value,
-        donorEmail: document.getElementById('donor-email').value,
         donorPhone: document.getElementById('donor-phone').value,
         donorId: user ? user.id : null,
         utr: document.getElementById('payment-utr').value,
@@ -467,7 +493,9 @@
   </script>
 
 </body>
+
 </html>
 
 </body>
+
 </html>
