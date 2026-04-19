@@ -1,5 +1,19 @@
 import { API_URL } from './config.js';
 
+// ===== Intro Animation =====
+window.addEventListener('load', () => {
+  const introAnimation = document.getElementById('intro-animation');
+  if (introAnimation) {
+    setTimeout(() => {
+      introAnimation.classList.add('fade-out');
+      setTimeout(() => {
+        if (introAnimation.parentNode) {
+          introAnimation.parentNode.removeChild(introAnimation);
+        }
+      }, 1000);
+    }, 2500);
+  }
+});
 // ===== Navbar Scroll Effect =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
