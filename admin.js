@@ -111,7 +111,11 @@ async function loadDashboardData() {
                     <td>${t.name}</td>
                     <td>${t.email}</td>
                     <td style="color: var(--admin-accent); font-weight: 700;">₹${t.amount.toLocaleString('en-IN')}</td>
-                    <td><button class="btn action-btn outline" style="padding: 6px 14px; font-size: 0.8rem;" onclick="viewDetails('${t._id}')">Details</button></td>
+                    <td><span style="background: rgba(184,134,11,0.1); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;">${t.paymentId || 'N/A'}</span></td>
+                    <td style="display: flex; gap: 5px;">
+                        <button class="btn action-btn outline" style="padding: 6px 14px; font-size: 0.8rem;" onclick="viewDetails('${t._id}')">Details</button>
+                        <button class="btn action-btn outline" style="padding: 6px 14px; font-size: 0.8rem; border-color: #ff4d4d; color: #ff4d4d;" onclick="deleteTransaction('${t._id}')" title="Delete Log"><i class="fas fa-trash"></i></button>
+                    </td>
                 </tr>
             `).join('');
         }
@@ -351,6 +355,28 @@ window.saveProjectEdit = saveProjectEdit;
 window.openDeleteModal = openDeleteModal;
 window.closeDeleteModal = closeDeleteModal;
 window.confirmDelete = confirmDelete;
+window.deleteTransaction = async function(id) {
+    if (!confirm('Are you sure you want to permanently delete this revenue transaction log?')) return;
+    
+    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch(`${API_URL}/api/admin/transactions/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (response.ok) {
+            alert('Transaction log deleted successfully!');
+            loadDashboardData();
+        } else {
+            const err = await response.json();
+            alert('Error: ' + err.message);
+        }
+    } catch (error) {
+        console.error('Delete transaction error:', error);
+        alert('Server error during deletion.');
+    }
+};
 
 // ===== SLIDESHOW MANAGEMENT =====
 async function fetchSlideshow() {
